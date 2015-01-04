@@ -47,12 +47,12 @@ t.on('tweet', function(twdata){
 
     console.log(newTweet);
 
-    newTweet.save(function(err, newTweet){
+    newTweet.save(function(err, createdTweet){
         if(err){
             console.log(err);
         }
         else{
-            console.dir(newTweet);
+            console.dir(createdTweet);
         }
 
     });
