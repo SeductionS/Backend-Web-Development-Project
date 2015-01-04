@@ -5,7 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var Twitter = require('node-tweet-stream');
-var koekje;
+var connectDB = require("./data/connectDB.js");
+var Tweet = require('./data/models/tweet');
+
 
 var t = new Twitter({
     consumer_key: 'hMllGcLbZRdSaNWGMrwqva59F',
@@ -14,26 +16,44 @@ var t = new Twitter({
     token_secret:'9MGDUGxJiUWtPqFCYtnmkled39wFS4pe8ISaAbz3ypIZk'
 });
 
-t.on('tweet', function(tweet){
-    //koekje = JSON.parse(tweet);
+t.on('tweet', function(twdata){
 
-    //console.log('tweet received: ',koekje.created_at);
-    //console.log(tweet);
-    console.log(tweet.user.profile_image_url);
-    console.log(tweet.user.screen_name);
-    console.log(tweet.user.profile_banner_url);
-    console.log(tweet.text);
-    //console.log(tweet.id);
+//    console.log(tweet.user.profile_image_url);
+//    console.log(tweet.user.screen_name);
+//    console.log(tweet.user.profile_banner_url);
+//    console.log(tweet.text);
+//    console.log("");
+
+    var newTweet = new Tweet({
+        userName: twdata.user.screen_name,
+        imageUrl: twdata.user.profile_image_url,
+        bannerUrl: twdata.user.profile_banner_url,
+        text: twdata.text,
+        hashTag: "test"
+    });
+
+    newTweet.save(function(err, newTweet){
+        if(err){
+            return console.error(err);
+        }
+        else{
+            console.dir(newTweet);
+        }
+
+    });
+
+    console.log(twdata.id);
 });
 
 t.on('error', function(err){
     console.log('oh no: ', err)
 });
 
-t.track('ikwileenkoekje');
+t.track('HappyYSDay');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
 
 var app = express();
 
