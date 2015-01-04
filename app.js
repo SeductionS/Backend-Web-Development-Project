@@ -29,6 +29,14 @@ t.on('tweet', function(twdata){
     var txt = twdata.text;
     var htag = "test";
 
+    console.log("username: " + typeof uName);
+    console.log("image url: " + typeof iUrl);
+    console.log("banner url: " + typeof bUrl);
+    console.log("text: " + typeof txt);
+    console.log("hashtag: " + typeof htag);
+
+
+
     var newTweet = new Tweet({
         userName: uName,
         imageUrl: iUrl,
@@ -41,7 +49,7 @@ t.on('tweet', function(twdata){
 
     newTweet.save(function(err, newTweet){
         if(err){
-            return console.error(err);
+            console.log(err);
         }
         else{
             console.dir(newTweet);

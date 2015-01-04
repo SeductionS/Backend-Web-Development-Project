@@ -3,12 +3,12 @@
  */
 var mongoose = require('mongoose');
 
-var tweetSchema = mongoose.Schema({
-    userName: String,
-    imageUrl: String,
-    bannerUrl: String,
-    text: String,
-    hashTag: String
+var tweetSchema = new mongoose.Schema({
+    userName: {type: String},
+    imageUrl: {type:String},
+    bannerUrl: {type:String},
+    text: {type:String},
+    hashTag: {type:String}
 });
 
 module.Exports = tweetSchema;
