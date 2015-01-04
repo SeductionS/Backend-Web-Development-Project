@@ -29,11 +29,11 @@ t.on('tweet', function(twdata){
     var txt = twdata.text;
     var htag = "test";
 
-    console.log("username: " + typeof uName);
-    console.log("image url: " + typeof iUrl);
-    console.log("banner url: " + typeof bUrl);
-    console.log("text: " + typeof txt);
-    console.log("hashtag: " + typeof htag);
+    console.log("username: " + uName + " - " + typeof uName);
+    console.log("image url: " + iUrl + " - " + typeof iUrl);
+    console.log("banner url: " + bUrl + " - " + typeof bUrl);
+    console.log("text: " + txt + " - " + typeof txt);
+    console.log("hashtag: " + htag + " - " + typeof htag);
 
 
 
@@ -44,7 +44,6 @@ t.on('tweet', function(twdata){
         text: txt,
         hashTag: htag
     });
-
     console.log(newTweet);
 
     newTweet.save(function(err, newTweet){

@@ -3,7 +3,7 @@
  */
 var mongoose = require("mongoose");
 
-module.exports= (function(){
+module.exports = (function(){
 
     var mongodbURL = 'mongodb://localhost/tweetDB';
     var db = mongoose.connect(mongodbURL); //connecteer de database
