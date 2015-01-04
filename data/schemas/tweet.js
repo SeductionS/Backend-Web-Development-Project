@@ -11,4 +11,4 @@ var tweetSchema = new mongoose.Schema({
     hashTag: {type: String}
 });
 
-module.Exports = tweetSchema;
+module.exports = tweetSchema;
