@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var Twitter = require('node-tweet-stream');
-var connectDB = require("./data/connectDB.js");
+require("./data/connectDB.js");
 var Tweet = require('./data/models/tweet');
 
 
@@ -18,19 +18,26 @@ var t = new Twitter({
 
 t.on('tweet', function(twdata){
 
-//    console.log(tweet.user.profile_image_url);
-//    console.log(tweet.user.screen_name);
-//    console.log(tweet.user.profile_banner_url);
-//    console.log(tweet.text);
+//    console.log(twdata.user.profile_image_url);
+//    console.log(twdata.user.screen_name);
+//    console.log(twdata.user.profile_banner_url);
+//    console.log(twdata.text);
 //    console.log("");
+    var uName = twdata.user.screen_name.toString();
+    var iUrl = twdata.user.profile_image_url;
+    var bUrl = twdata.user.profile_banner_url;
+    var txt = twdata.text;
+    var htag = "test";
 
     var newTweet = new Tweet({
-        userName: twdata.user.screen_name,
-        imageUrl: twdata.user.profile_image_url,
-        bannerUrl: twdata.user.profile_banner_url,
-        text: twdata.text,
-        hashTag: "test"
+        userName: uName,
+        imageUrl: iUrl,
+        bannerUrl: bUrl,
+        text: txt,
+        hashTag: htag
     });
+
+    console.log(newTweet);
 
     newTweet.save(function(err, newTweet){
         if(err){
@@ -42,7 +49,7 @@ t.on('tweet', function(twdata){
 
     });
 
-    console.log(twdata.id);
+    //console.log(twdata.id);
 });
 
 t.on('error', function(err){

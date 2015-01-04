@@ -4,6 +4,6 @@
 var mongoose = require('mongoose');
 var TweetSchema = require("../schemas/tweet.js");
 
-var Tweet = mongoose.model('Tweet',TweetSchema,'tweets');
+var Tweet = mongoose.model('Tweet',TweetSchema);
 
 module.exports = Tweet;

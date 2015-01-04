@@ -3,8 +3,8 @@
  */
 var mongoose = require('mongoose');
 
-var tweetSchema = new mongoose.Schema({
-    userName: {type:String, required: true},
+var tweetSchema = mongoose.Schema({
+    userName: String,
     imageUrl: String,
     bannerUrl: String,
     text: String,
