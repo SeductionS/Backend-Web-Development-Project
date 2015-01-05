@@ -1,7 +1,11 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/materialize.css' media="screen,projection")
+    body
+        block content
+        script(type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js")
+        script(type="text/javascript" src="/javascripts/materialize.min.js")
+        script $(".button-collapse").sideNav();
