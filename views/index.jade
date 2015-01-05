@@ -12,34 +12,17 @@ block content
                 i(class="mdi-navigation-menu")
     section(class="wall")
         div(class="row")
-            div(class="col s12 m3")
-                div(class="card")
-                    div(class="card-image")
-                        img(src="http://materializecss.com/images/sample-1.jpg")
-                        span(class="card-title") #{title}
-                    div(class="card-content white")
-                        p= title
-            div(class="col s12 m3")
-                div(class="card")
-                    div(class="card-image")
-                        img(src="http://materializecss.com/images/sample-1.jpg")
-                        span(class="card-title") #{title}
-                    div(class="card-content white")
-                        p= title
-            div(class="col s12 m3")
-                div(class="card")
-                    div(class="card-image")
-                        img(src="http://materializecss.com/images/sample-1.jpg")
-                        span(class="card-title") #{title}
-                    div(class="card-content white")
-                        p= title
-            div(class="col s12 m3")
-                div(class="card")
-                    div(class="card-image")
-                        img(src="http://materializecss.com/images/sample-1.jpg")
-                        span(class="card-title") #{title}
-                    div(class="card-content white")
-                        p= title
+            each tweet in data
+                div(class="col s12 m3")
+                    div(class="card")
+                        div(class="card-image")
+                            img(src=tweet.bannerUrl)
+                            span(class="card-title") #{tweet.userName}
+                        div(class="card-content white")
+                            img(src=tweet.imageUrl)
+                            p= tweet.text
+
+
         //<div class="col s12 m6">
         //    <div class="card">
         //        <div class="card-image">

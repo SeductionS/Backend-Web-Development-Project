@@ -16,8 +16,8 @@ var t = new Twitter({
     token_secret:'9MGDUGxJiUWtPqFCYtnmkled39wFS4pe8ISaAbz3ypIZk'
 });
 
-t.on('tweet', function(twdata){
 
+t.on('tweet', function(twdata){
 //    console.log(twdata.user.profile_image_url);
 //    console.log(twdata.user.screen_name);
 //    console.log(twdata.user.profile_banner_url);
@@ -29,11 +29,11 @@ t.on('tweet', function(twdata){
     var txt = twdata.text;
     var htag = "test";
 
-    console.log("username: " + uName + " - " + typeof uName);
-    console.log("image url: " + iUrl + " - " + typeof iUrl);
-    console.log("banner url: " + bUrl + " - " + typeof bUrl);
-    console.log("text: " + txt + " - " + typeof txt);
-    console.log("hashtag: " + htag + " - " + typeof htag);
+//    console.log("username: " + uName + " - " + typeof uName);
+//    console.log("image url: " + iUrl + " - " + typeof iUrl);
+//    console.log("banner url: " + bUrl + " - " + typeof bUrl);
+//    console.log("text: " + txt + " - " + typeof txt);
+//    console.log("hashtag: " + htag + " - " + typeof htag);
 
 
 
@@ -44,26 +44,24 @@ t.on('tweet', function(twdata){
         text: txt,
         hashTag: htag
     });
-    console.log(newTweet);
 
     newTweet.save(function(err, createdTweet){
         if(err){
             console.log(err);
         }
         else{
-            console.dir(createdTweet);
+            //console.dir(createdTweet);
         }
 
     });
 
-    //console.log(twdata.id);
 });
 
 t.on('error', function(err){
     console.log('oh no: ', err)
 });
 
-t.track('HappyYSDay');
+t.track('Belgium');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

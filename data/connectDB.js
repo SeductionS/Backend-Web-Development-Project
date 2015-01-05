@@ -10,6 +10,7 @@ module.exports = (function(){
 
     mongoose.connection.on("open", function () {
         console.log("connection with mongo server " + mongodbURL);
+
         mongoose.connection.db.collectionNames(function (err, names) {
             console.log("collection list:");
             console.log(names);
