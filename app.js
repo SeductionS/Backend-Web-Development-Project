@@ -1,12 +1,12 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var Twitter = require('node-tweet-stream');
-require("./data/connectDB.js");
-var Tweet = require('./data/models/tweet');
+var express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    Twitter = require('node-tweet-stream'),
+    dbconnect = require("./data/connectDB.js"),
+    Tweet = require('./data/models/tweet');
 
 
 var t = new Twitter({
@@ -61,7 +61,7 @@ t.on('error', function(err){
     console.log('oh no: ', err)
 });
 
-t.track('Belgium');
+//t.track('Belgium');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
