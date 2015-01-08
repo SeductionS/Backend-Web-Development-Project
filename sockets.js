@@ -6,7 +6,8 @@ var sockets = function(server){
     var hashtags = {},
     io = require('socket.io').listen(server),
     Twitter = require('node-tweet-stream'),
-    Tweet = require('./data/models/tweet');
+    Tweet = require('./data/models/tweet'),
+    hashtags = [];
 
     var t = new Twitter({
         consumer_key: 'hMllGcLbZRdSaNWGMrwqva59F',
@@ -36,13 +37,32 @@ var sockets = function(server){
     });
 
     io.sockets.on('connection', function(socket){
+        socket.sockethts = [];
 
         socket.on("hashtag-read", function(hashtag){
+            //start tracking new hashtag
             t.track(hashtag);
+
+            //push hashtag into hashtagarray, will be used to show tracking hashtags in menu
+            hashtags.push(hashtag);
+            io.sockets.emit('hashtagstracking',hashtags);
+            //set hashtag as socketproperty, will be used to stop tracking the hashtag when client/socket disconnects --> reduce unnecessary server load
+            socket.sockethts.push(hashtag);
+            console.log(socket.sockethts);
+
+            //console log of the newly added hashtag which is tracking
             console.log("socket is now tracking: #"+hashtag);
         })
 
-    })
+        socket.on("disconnect", function(){
+            var l = socket.sockethts.length;
+            for(i=0;i<l;i++){
+                var index = hashtags.indexOf(socket.sockethts[i]);
+                if(index>-1) {hashtags.splice(index,1);}
+            }
+        })
+
+    });
 
 
 };
