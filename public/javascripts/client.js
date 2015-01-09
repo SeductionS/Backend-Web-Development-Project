@@ -27,11 +27,11 @@ jQuery(function($){
             $("#nav-mobile").empty();
             var length = latesttags.length;
             for(i = 0; i<length; i++){
-                $("#nav-mobile").append('<li><a href="'+hashtags[i]+'">'+hashtags[i]+'</a></li>');
+                $("#nav-mobile").append('<li><a href="'+hashtags[i].slice(1)+'">'+hashtags[i]+'</a></li>');
             }
         }
         else{
-                $("#nav-mobile").append('<li><a href="'+hashtags[l-1]+'">'+hashtags[l-1]+'</a></li>');
+                $("#nav-mobile").append('<li><a href="'+hashtags[l-1].slice(1)+'">'+hashtags[l-1]+'</a></li>');
         }
     });
 });

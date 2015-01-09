@@ -39,8 +39,13 @@ var sockets = function(server){
     io.sockets.on('connection', function(socket){
         socket.sockethts = [];
 
-        socket.on("hashtag-read", function(hashtag){
+        socket.on("hashtag-read", function(htag){
             //start tracking new hashtag
+            var hashtag = htag.trim();
+            if(hashtag.substr(0,1) !== '#'){
+                console.log("hashtag doesn't start with #");
+                hashtag = '#'+hashtag;
+            }
             t.track(hashtag);
 
             //push hashtag into hashtagarray, will be used to show tracking hashtags in menu
@@ -51,13 +56,15 @@ var sockets = function(server){
             console.log(socket.sockethts);
 
             //console log of the newly added hashtag which is tracking
-            console.log("socket is now tracking: #"+hashtag);
+            console.log("socket is now tracking: "+hashtag);
         })
 
         socket.on("disconnect", function(){
+            console.log("Socket disconnected, following hashtags will stop tracking:"+socket.sockethts);
             var l = socket.sockethts.length;
             for(i=0;i<l;i++){
                 var index = hashtags.indexOf(socket.sockethts[i]);
+                t.untrack(socket.sockethts[i]);
                 if(index>-1) {hashtags.splice(index,1);}
             }
         })
