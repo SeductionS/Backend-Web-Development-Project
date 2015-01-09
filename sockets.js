@@ -27,7 +27,7 @@ var sockets = function(server){
 
         newTweet.save(function(err, createdTweet){
             if(err){ console.log(err); }
-            else{ console.log("new tweet added"); }
+//            else{ console.log("new tweet added"); }
         });
 
         t.on('error', function(err){
