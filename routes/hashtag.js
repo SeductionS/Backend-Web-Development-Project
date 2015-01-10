@@ -12,6 +12,7 @@ router.get('/tweets/:tag', function(req, res) {
 
     console.log("routed tag is: "+htag);
 
+
     Tweet.find({hashTag: htag}).sort('-_id').limit(20).lean().exec(
         function(err,tweets){
             //console.log(tweets);

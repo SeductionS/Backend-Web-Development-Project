@@ -9,16 +9,35 @@ html
             div(class="nav-wrapper materialize-twitter third")
                 a(class="brand-logo materialize-twitter-text secondary" href="../")=title
                 ul(id="nav-mobile" class="right side-nav materialize-twitter third")
-
+                    li(id="chatbutton")
+                      a(id="chatlink" href="#")='chat'
                 a(class="button-collapse" href="#" data-activates="nav-mobile")
                     i(class="mdi-navigation-menu")
+        div(id="chatboxwrap")
+            div(id="nickWrap")
+                div(class="row")
+                    form(id="setNick" class="col s12" style="max-width:85%;" class="center-block")
+                        div(class="input-field col s10")
+                            input(id="nickname" required="required" type="text" class="validate")
+                            label(for="nickname")= 'Kies een chatnaam'
+                        input(type="submit" id="chatnamebtn" class="btn-large waves-light" value="start chat")
+            div(id="contentWrap")
+                div(id="chatWrap")
+                    div(id="chat")
+                    form(id="send-message")
+                        input(id="message" type="text" required="required")
+                        input(type="submit" class="btn-large waves-light")
+                div(id="users")
         form(id="send-hashtag" style="max-width:85%;" class="center-block")
             input(type="text" id="hashtag" required="required" style="max-width:80%;")
             input(class="btn-large waves-light" type="submit" style="" value="zoek hashtag")
         block content
+
+
         script(type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js")
         //script(src="http://code.jquery.com/jquery-latest.min.js")
         script(src="https://cdn.socket.io/socket.io-1.2.1.js")
         script(type="text/javascript" src="/javascripts/materialize.min.js")
         script(src="/javascripts/client.js")
+        script(src="/javascripts/chat.js")
         script $(".button-collapse").sideNav();

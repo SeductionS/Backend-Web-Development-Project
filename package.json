@@ -2,6 +2,7 @@
   "name": "BackendWebDevProject",
   "version": "0.0.0",
   "private": true,
+    "main" : "./bin/www",
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -13,6 +14,9 @@
     "jade": "~1.6.0",
     "mongoose": "3.8.21",
     "morgan": "~1.3.0",
-    "serve-favicon": "~2.1.3"
+    "serve-favicon": "~2.1.3",
+    "nodeunit":"0.9.0",
+      "node-tweet-stream":"1.6.0",
+      "socket.io":"1.2.1"
   }
 }

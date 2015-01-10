@@ -5,15 +5,16 @@ var mongoose = require("mongoose");
 
 module.exports = (function(){
 
-    var mongodbURL = 'mongodb://localhost/tweetDB';
+    //var mongodbURL = 'mongodb://localhost/tweetDB';
+    var mongodbURL = 'mongodb://roderik:roderik@proximus.modulusmongo.net:27017/a5sugoDu';
     var db = mongoose.connect(mongodbURL); //connecteer de database
 
     mongoose.connection.on("open", function () {
         console.log("connection with mongo server " + mongodbURL);
 
         mongoose.connection.db.collectionNames(function (err, names) {
-            console.log("collection list:");
-            console.log(names);
+            //console.log("collection list:");
+            //console.log(names);
         });
     });
     mongoose.connection.on("error", function () { });
