@@ -7,6 +7,17 @@ jQuery(function($){
     var $hashtag = $('#hashtag');
     var newTweets = 0;
     var uri = window.location.pathname;
+    var cards;
+    var wall = $(".wall");
+
+    $(document).ready(function() {
+        cards = $('.card').length;
+        if(cards==0){
+            var preloader = '<div id="prldr"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div><span>Tweets aan het ophalen</span></div>';
+            wall.append(preloader);
+        }
+    });
+
 
     $hashtagform.submit(function(e){
         e.preventDefault();
@@ -32,6 +43,8 @@ jQuery(function($){
     });
 
     socket.on('new-tweet',function(){
+        cards=1;
+        $('#prldr').hide();
         newTweets++;
         $newtweets = $('.new');
         if(newTweets>0){

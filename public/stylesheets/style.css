@@ -81,3 +81,12 @@ span.badge.new:after {
     display:inline;
     float:left;
 }
+#prldr{
+    margin-left: 50%;
+    margin-right: 50%;
+}
+#prldr>span{
+    margin-top: 20px;
+    width:200px;
+    display: block;
+}

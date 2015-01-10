@@ -5,8 +5,8 @@ var mongoose = require("mongoose");
 
 module.exports = (function(){
 
-    //var mongodbURL = 'mongodb://localhost/tweetDB';
-    var mongodbURL = 'mongodb://roderik:roderik@proximus.modulusmongo.net:27017/a5sugoDu';
+    var mongodbURL = 'mongodb://localhost/tweetDB';
+    //var mongodbURL = 'mongodb://roderik:roderik@proximus.modulusmongo.net:27017/a5sugoDu';
     var db = mongoose.connect(mongodbURL); //connecteer de database
 
     mongoose.connection.on("open", function () {
